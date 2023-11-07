@@ -3,6 +3,7 @@ package stub;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import stub.common.BaseStub;
 import stub.example.ExampleStub;
 import com.github.tomakehurst.wiremock.WireMockServer;
 
@@ -19,16 +20,16 @@ public class Main {
 
         if (args.length == 0) {
             logger.info("Provide a mock interface name to simulate");
-            option = "example";
+            return;
         } else {    
             option = args[0];
         }
-    
-        ExampleStub stub = null;
+        
+        BaseStub stub = null;
     
         switch (option.toLowerCase()) {
         case "example":
-            logger.info("Starting Example stub");
+            logger.info("Starting stub");
             stub = new ExampleStub(option);
             break;
         default:
