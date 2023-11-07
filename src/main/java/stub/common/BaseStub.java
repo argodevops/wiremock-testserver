@@ -13,7 +13,7 @@ import com.github.tomakehurst.wiremock.WireMockServer;
  */
 public abstract class BaseStub {
 
-    private final static Logger logger = LoggerFactory.getLogger(BaseStub.class);
+    private static final Logger logger = LoggerFactory.getLogger(BaseStub.class);
 
     protected final Properties properties;
 
