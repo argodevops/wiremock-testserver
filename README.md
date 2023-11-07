@@ -8,3 +8,7 @@
 4. Azure Functions is listening for changes to the queue and will retrieve the names and send them to API being tested
 5. WireMock will exist in place of the live APIs and will use the names from the request to obtain further information from the orignal CSV
 6. The data from the CSV is transformed and passed back to Java in XML format
+
+![WireMockDiagram][Diagram]
+
+[Diagram]: /WireMock_poc.png
