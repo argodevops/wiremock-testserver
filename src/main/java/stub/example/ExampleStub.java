@@ -70,7 +70,7 @@ public class ExampleStub extends BaseStub {
             }
 
         } catch (IOException e) {
-            logger.error("Failed to open file " + filename);
+            logger.error("Failed to open file {}", filename);
         }
     }
 }

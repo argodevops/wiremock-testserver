@@ -13,9 +13,9 @@ import com.github.tomakehurst.wiremock.WireMockServer;
  */
 public abstract class BaseStub {
 
-    final static private Logger logger = LoggerFactory.getLogger(BaseStub.class);
+    private final static Logger logger = LoggerFactory.getLogger(BaseStub.class);
 
-    final protected Properties properties;
+    protected final Properties properties;
 
     protected CSVParser parser = null;
 
@@ -24,7 +24,7 @@ public abstract class BaseStub {
      * 
      * @param name the stub endpoint name
      */
-    public BaseStub(final String name) {
+    protected BaseStub(final String name) {
         this.properties = this.readStubProperties(name);
     }
 

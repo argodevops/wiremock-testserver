@@ -38,7 +38,7 @@ public class Main {
         }
 
         // Start wiremock server. See https://wiremock.org/docs/configuration for configuring server for higher performance.
-        logger.info("WireMock server starting - " + stub.getPort());
+        logger.info("WireMock server starting - {}", stub.getPort());
         WireMockServer wireMockServer = new WireMockServer(options().port(stub.getPort()));
         wireMockServer.start();
         logger.info("WireMock server started");
