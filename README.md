@@ -1,5 +1,9 @@
 # wiremock-testserver
 
+# running docker image
+# Ensure to add the mock interface name to the INTERFACE var
+docker run -e INTERFACE=example -p 8089:8089 wireframe_test
+
 # Diagram Explanation
 
 1. Java Gatling makes a request to a static CSV file stored on Azure, the file returns the name column of each record
