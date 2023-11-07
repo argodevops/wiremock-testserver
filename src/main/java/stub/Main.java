@@ -8,26 +8,28 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 
-import java.util.Properties;
+import java.io.IOException;
 
 public class Main {
     final static Logger logger = LoggerFactory.getLogger(Main.class);
 
-    public static void main(final String[] args) {
-        System.out.println("Main");
+    public static void main(final String[] args) throws IOException {
+        
+        String option = null;
+
         if (args.length == 0) {
             logger.info("Provide a mock interface name to simulate");
-        return;
+            option = "example";
+        } else {    
+            option = args[0];
         }
-    
-        String option = args[0];
     
         ExampleStub stub = null;
     
         switch (option.toLowerCase()) {
         case "example":
             logger.info("Starting Example stub");
-            stub = new ExampleStub();
+            stub = new ExampleStub(option);
             break;
         default:
             logger.error("Unknown stub interface: " + option);
@@ -35,17 +37,11 @@ public class Main {
         }
 
         // Start wiremock server. See https://wiremock.org/docs/configuration for configuring server for higher performance.
-        logger.info("Starting WireMock server");
-        // CPF TODO 
-        // Read in example.properties file
-        // server.port
-        // testdata.filename
-        final Properties properties = new Properties();
-
-        WireMockServer wireMockServer = new WireMockServer(options().port(8089));
+        logger.info("WireMock server starting - " + stub.getPort());
+        WireMockServer wireMockServer = new WireMockServer(options().port(stub.getPort()));
         wireMockServer.start();
-        logger.info("Started WireMock server");
+        logger.info("WireMock server started");
         
-        stub.configure(wireMockServer, properties);
+        stub.configure(wireMockServer);
     }
 }
